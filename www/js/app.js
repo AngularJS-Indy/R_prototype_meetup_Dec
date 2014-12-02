@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'starter.services'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -35,6 +35,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
         views: {
             'menuContent': {
                 templateUrl: "templates/search.html"
+            }
+        }
+    })
+
+    .state('app.beer', {
+        url: '/beer',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/beer.html',
+                resolve: {
+                    beer: function(Brewery) {
+                        return Brewery.get();
+                    }
+                },
+                controller: function($scope, beer) {
+                    console.log(beer);
+                    $scope.beer = beer.data.data;
+                }
             }
         }
     })
