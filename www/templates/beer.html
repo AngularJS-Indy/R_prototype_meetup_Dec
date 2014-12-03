@@ -9,7 +9,10 @@
 	</ion-header-bar>
 	<ion-list>
 	  <ion-item ng-repeat="b in beer">
-	   {{b | json}}
+	   <!-- {{b | json}} -->
+	   <img ng-src="http://ec2-54-83-34-233.compute-1.amazonaws.com/mobileCraftBeer/public/{{b.brewerLogo}}" height="300px" width="200px">
+	    <a href="{{b.website}}" target="_blank"><h2>{{b.name}}</h2></a>
+	    
 	  </ion-item>
 	</ion-list>
   </ion-content>

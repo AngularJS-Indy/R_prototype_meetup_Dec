@@ -49,9 +49,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
                         return Brewery.get();
                     }
                 },
-                controller: function($scope, beer) {
+                controllerAs: function(beer) {
                     console.log(beer);
-                    $scope.beer = beer.data.data;
+                    this.beer = beer.data.data;
                 }
             }
         }
